@@ -24,6 +24,8 @@ namespace EmployeeWageComputation_C
     {
         static void Main(string[] args)
         {
+            int WAGE_PER_HOUR = 20;
+            int fullDayHours = 0;
             Console.WriteLine("Welcome to Employee Wage Computation Program.");
             /// Generate random number
             Random r = new Random();
@@ -33,10 +35,13 @@ namespace EmployeeWageComputation_C
             if (randomNumber == 1)
             {
                 Console.WriteLine("Employee is Present!");
+                fullDayHours = 8;
             }
             else {
                 Console.WriteLine("Employee is Absent!");
             }
+            ///Displays the Daily Wage of the Employee.
+            Console.WriteLine("The Daily Wage of the Employee is "+ WAGE_PER_HOUR*fullDayHours);
         }
     }
 }
