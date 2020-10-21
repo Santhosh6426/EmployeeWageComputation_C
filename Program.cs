@@ -32,18 +32,20 @@ namespace EmployeeWageComputation_C
             int randomNumber=r.Next(0, 3);
             /// Condition to Check if Employee is Present or Absent.
             /// Displays Employee is present or Absent based on Random Number.
-            if (randomNumber == 2)
+            switch(randomNumber)
             {
-                Console.WriteLine("Employee is Present for Full Day!");
-                dayHours = 8;
-            }
-            else if(randomNumber==1){
-                Console.WriteLine("Employee is Present for Half day!");
-                dayHours = 4;
+                case 2:
+                    Console.WriteLine("Employee is Present for Full Day!");
+                    dayHours = 8;
+                    break;
 
-            }
-            else {
-                Console.WriteLine("Employee is Absent!");
+                case 1:
+                    Console.WriteLine("Employee is Present for Half day!");
+                    dayHours = 4;
+                    break;
+                case 0:
+                    Console.WriteLine("Employee is Absent!");
+                    break;
             }
             ///Displays the Daily Wage of the Employee.
             Console.WriteLine("The Daily Wage of the Employee is "+ WAGE_PER_HOUR*dayHours);
