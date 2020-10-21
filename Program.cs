@@ -30,6 +30,7 @@ namespace EmployeeWageComputation_C
             Console.WriteLine("Welcome to Employee Wage Computation Program.");
             ///To Compute Monthly Wage for a Month Consisting of 20 Working Days
             for (int i = 1; i<=20; i++) {
+                ///Set up Limited Working Hours.
                 if (totalWorkingHours>=100) {
                     break;
                 }
