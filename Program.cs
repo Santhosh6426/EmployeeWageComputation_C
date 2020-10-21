@@ -25,30 +25,37 @@ namespace EmployeeWageComputation_C
         static void Main(string[] args)
         {
             int WAGE_PER_HOUR = 20;
-            int dayHours = 0;
+            int monthlyWage = 0;
             Console.WriteLine("Welcome to Employee Wage Computation Program.");
-            /// Generate random number
-            Random r = new Random();
-            int randomNumber=r.Next(0, 3);
-            /// Condition to Check if Employee is Present or Absent.
-            /// Displays Employee is present or Absent based on Random Number.
-            switch(randomNumber)
-            {
-                case 2:
-                    Console.WriteLine("Employee is Present for Full Day!");
-                    dayHours = 8;
-                    break;
+            ///To Compute Monthly Wage for a Month Consisting of 20 Working Days
+            for (int i = 1; i<=20; i++) { 
+                int dailyWage = 0;
+                int dayHours = 0;
+                /// Generate random number
+                Random r = new Random();
+                int randomNumber = r.Next(0, 3);
+                /// Condition to Check if Employee is Present or Absent.
+                /// Displays Employee is present or Absent based on Random Number.
+                switch (randomNumber)
+                {
+                    case 2:
+                        dayHours = 8;
+                        break;
 
-                case 1:
-                    Console.WriteLine("Employee is Present for Half day!");
-                    dayHours = 4;
-                    break;
-                case 0:
-                    Console.WriteLine("Employee is Absent!");
-                    break;
+                    case 1:
+                        dayHours = 4;
+                        break;
+                    case 0:
+                        dayHours = 0;
+                        break;
+                }
+                ///To Compute Daily Wage.
+                dailyWage = WAGE_PER_HOUR * dayHours;
+                ///To Compute MonthlyWage.
+                monthlyWage = monthlyWage + dailyWage;
+                ///Displays the Daily Wages and Monthly wages of the Employee.
+                Console.WriteLine("Day: "+i+"  Work Hours : "+dayHours +"  DailyWage: "+dailyWage+"  Monthly Wage: "+monthlyWage);
             }
-            ///Displays the Daily Wage of the Employee.
-            Console.WriteLine("The Daily Wage of the Employee is "+ WAGE_PER_HOUR*dayHours);
         }
     }
 }
