@@ -26,9 +26,13 @@ namespace EmployeeWageComputation_C
         {
             int WAGE_PER_HOUR = 20;
             int monthlyWage = 0;
+            int totalWorkingHours = 0;
             Console.WriteLine("Welcome to Employee Wage Computation Program.");
             ///To Compute Monthly Wage for a Month Consisting of 20 Working Days
-            for (int i = 1; i<=20; i++) { 
+            for (int i = 1; i<=20; i++) {
+                if (totalWorkingHours>=100) {
+                    break;
+                }
                 int dailyWage = 0;
                 int dayHours = 0;
                 /// Generate random number
@@ -49,12 +53,14 @@ namespace EmployeeWageComputation_C
                         dayHours = 0;
                         break;
                 }
+                ///To Compute Total Working Hours
+                totalWorkingHours = totalWorkingHours + dayHours;
                 ///To Compute Daily Wage.
                 dailyWage = WAGE_PER_HOUR * dayHours;
                 ///To Compute MonthlyWage.
                 monthlyWage = monthlyWage + dailyWage;
                 ///Displays the Daily Wages and Monthly wages of the Employee.
-                Console.WriteLine("Day: "+i+"  Work Hours : "+dayHours +"  DailyWage: "+dailyWage+"  Monthly Wage: "+monthlyWage);
+                Console.WriteLine("Day: "+i+"  Work Hours : "+dayHours +"  Total Working Hours: "+totalWorkingHours+"  DailyWage: "+dailyWage+"  Monthly Wage: "+monthlyWage);
             }
         }
     }
