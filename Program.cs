@@ -24,20 +24,31 @@ namespace EmployeeWageComputation_C
     {
         const int IS_EMPLOYEE_PART_TIME = 1;
         const int IS_EMPLOYEE_FULL_TIME = 2;
-        const int EMPLOYEE_RATE_PER_HOUR = 20;
-        const int NO_OF_WORKING_DAYS = 20;
-        const int MAX_HOURS_IN_MONTH = 100;
+        ///const int EMPLOYEE_RATE_PER_HOUR = 20;
+        ///const int NO_OF_WORKING_DAYS = 20;
+        ///const int MAX_HOURS_IN_MONTH = 100;
         ///int empHours = 0;
         static void Main(string[] args)
         {
-            Console.WriteLine("Employee Wage: "+ComputeEmpWage());
+            ///Monthly Wage for multiple companies.
+            ///calls the Computwage method with the following parameters.
+            Console.WriteLine("Employee Wage for Samsung is : "+ComputeEmpWage("Samsung", 25, 24, 90));
+            Console.WriteLine("Employee Wage for Nokia is : " + ComputeEmpWage("Nokia", 22, 22, 100));
         }
-        public static int ComputeEmpWage()
+        /// <summary>
+        /// Computes the emp wage.
+        /// </summary>
+        /// <param name="companyName">Name of the company.</param>
+        /// <param name="employeeRatePerHour">The employee rate per hour.</param>
+        /// <param name="numberOfWorkingDays">The number of working days.</param>
+        /// <param name="maxHoursInMonth">The maximum hours in month.</param>
+        /// <returns></returns>
+/        public static int ComputeEmpWage(String companyName, int employeeRatePerHour, int numberOfWorkingDays, int maxHoursInMonth)
         {
             int empHours = 0;
             int totalEmpHours = 0;
             int totalWorkingDays = 0;
-            while (totalEmpHours < MAX_HOURS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS)
+            while (totalEmpHours < maxHoursInMonth && totalWorkingDays < numberOfWorkingDays)
             {
                 totalWorkingDays++;
                 Random random = new Random();
@@ -53,8 +64,8 @@ namespace EmployeeWageComputation_C
                         break;
                 }
                 totalEmpHours += empHours;
-            }
-            return totalEmpHours * EMPLOYEE_RATE_PER_HOUR;
+            }             
+            return totalEmpHours * employeeRatePerHour;
         }
     }
 }
