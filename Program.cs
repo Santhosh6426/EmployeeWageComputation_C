@@ -22,47 +22,39 @@ namespace EmployeeWageComputation_C
 {
     class Program
     {
+        const int IS_EMPLOYEE_PART_TIME = 1;
+        const int IS_EMPLOYEE_FULL_TIME = 2;
+        const int EMPLOYEE_RATE_PER_HOUR = 20;
+        const int NO_OF_WORKING_DAYS = 20;
+        const int MAX_HOURS_IN_MONTH = 100;
+        ///int empHours = 0;
         static void Main(string[] args)
         {
-            int WAGE_PER_HOUR = 20;
-            int monthlyWage = 0;
-            int totalWorkingHours = 0;
-            Console.WriteLine("Welcome to Employee Wage Computation Program.");
-            ///To Compute Monthly Wage for a Month Consisting of 20 Working Days
-            for (int i = 1; i<=20; i++) {
-                ///Set up Limited Working Hours.
-                if (totalWorkingHours>=100) {
-                    break;
-                }
-                int dailyWage = 0;
-                int dayHours = 0;
-                /// Generate random number
-                Random r = new Random();
-                int randomNumber = r.Next(0, 3);
-                /// Condition to Check if Employee is Present or Absent.
-                /// Displays Employee is present or Absent based on Random Number.
-                switch (randomNumber)
+            Console.WriteLine("Employee Wage: "+ComputeEmpWage());
+        }
+        public static int ComputeEmpWage()
+        {
+            int empHours = 0;
+            int totalEmpHours = 0;
+            int totalWorkingDays = 0;
+            while (totalEmpHours < MAX_HOURS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS)
+            {
+                totalWorkingDays++;
+                Random random = new Random();
+                switch (random.Next(0, 3))
                 {
-                    case 2:
-                        dayHours = 8;
+                    case IS_EMPLOYEE_FULL_TIME:
+                        empHours = 8;
                         break;
-
-                    case 1:
-                        dayHours = 4;
+                    case IS_EMPLOYEE_PART_TIME:
+                        empHours = 4;
                         break;
-                    case 0:
-                        dayHours = 0;
+                    default: empHours = 0;
                         break;
                 }
-                ///To Compute Total Working Hours
-                totalWorkingHours = totalWorkingHours + dayHours;
-                ///To Compute Daily Wage.
-                dailyWage = WAGE_PER_HOUR * dayHours;
-                ///To Compute MonthlyWage.
-                monthlyWage = monthlyWage + dailyWage;
-                ///Displays the Daily Wages and Monthly wages of the Employee.
-                Console.WriteLine("Day: "+i+"  Work Hours : "+dayHours +"  Total Working Hours: "+totalWorkingHours+"  DailyWage: "+dailyWage+"  Monthly Wage: "+monthlyWage);
+                totalEmpHours += empHours;
             }
+            return totalEmpHours * EMPLOYEE_RATE_PER_HOUR;
         }
     }
 }
